@@ -1,4 +1,4 @@
-name: CI - Test de Integración Continua
+name: Node.js CI
 
 on:
   push:
@@ -10,16 +10,16 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Clonar repositorio
+      - name: Checkout código
         uses: actions/checkout@v3
 
-      - name: Instalar Node.js
+      - name: Configurar Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: 18  # Asegúrate de usar una versión válida
 
       - name: Instalar dependencias
-        run: npm ci
+        run: npm install  # Cambia 'npm ci' por 'npm install' si no tienes package-lock.json
 
-      - name: Ejecutar pruebas unitarias
+      - name: Ejecutar pruebas
         run: npm test
