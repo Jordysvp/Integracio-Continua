@@ -16,10 +16,13 @@ jobs:
       - name: Configurar Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18  # Asegúrate de usar una versión válida
+          node-version: 18 
 
       - name: Instalar dependencias
-        run: npm install  # Cambia 'npm ci' por 'npm install' si no tienes package-lock.json
+        run: npm install 
+
+      - name: Dar permisos a Jest
+        run: chmod +x node_modules/.bin/jest 
 
       - name: Ejecutar pruebas
         run: npm test
